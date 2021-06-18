@@ -1,0 +1,27 @@
+{{#each postList}}
+<div class="row">
+  <div class="col-sm-3">
+    <div class="row">
+      <div class="col-sm-4">
+        <image style="max-width:100%;
+max-height:100%; min-width: 40px;" src="{{poster_image}}" aria-label="Avatar"></image>
+      </div>
+      <div class="col-sm-8">
+        <h4>{{poster}}</h4>
+      </div>
+    </div>
+    <div class="row">
+      {{createdAt}}
+    </div>
+  </div>
+  <div class="col-sm-9">
+    <div class="row">
+      <h5>{{header}}</h3>
+    </div>
+    <div class="row" style="white-space: pre-line">
+      {{{content}}}
+    </div>
+  </div>
+</div>
+<hr>
+{{/each}}

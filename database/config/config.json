@@ -1,0 +1,25 @@
+{
+
+  "development": {
+    "username": "khvw",
+    "password": "Xk3PXK-5kmg_",
+    "database": "khvw",
+    "host": "den1.mysql5.gear.host",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "khvw",
+    "password": "Xk3PXK-5kmg_",
+    "database": "khvw",
+    "host": "den1.mysql5.gear.host",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "khvw",
+    "password": "Xk3PXK-5kmg_",
+    "database": "khvw",
+    "host": "den1.mysql5.gear.host",
+    "dialect": "mysql"
+  }
+}
+

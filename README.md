@@ -1,2 +1,1 @@
 # myWebApplication
-Seminar Project

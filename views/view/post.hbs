@@ -1,0 +1,110 @@
+<form action="/post" method="post">
+
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-2">
+            <img src="/images/icon1.png" alt="" id="image_view">
+            <hr>
+            <select name="image" id="avatar">
+                <option value="/images/icon1.png">Avatar 1</option>
+                <option value="/images/icon2.png">Avatar 2</option>
+                <option value="/images/icon3.png">Avatar 3</option>
+                <option value="/images/icon4.png">Avatar 4</option>
+            </select>
+
+        </div>
+
+        <div class="col-10">
+            <div class="row">
+                <div class="col-2">
+                    Your name
+                </div>
+                <div class="col-8">
+                    <input type="text" name="poster" id="" style="width:100%;" class="rounded">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-2">
+                    Header
+                </div>
+                <div class="col-8">
+                    <input type="text" name="header" id="header" style="width:100%;" class="rounded">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-2">
+                    Body
+                </div>
+                <div class="col-8">
+                    <textarea id="txtArea" name="content" cols="40" rows="5" style="width:100%;"
+                        class="rounded"></textarea>
+
+                </div>
+            </div>
+
+            <button id="insertURL" type="button"><i class="fa fa-link" aria-hidden="true">      Insert URL</i></button>
+            <button id="insertImage" type="button"><i class="fa fa-file-image-o" aria-hidden="true">      Insert Online
+                    Image</i></button>
+            <script>
+                var position;
+
+                function getCaretPosition() {
+                    var ctlTextArea = document.getElementById('textArea');
+                    position = ctlTextArea.selectionStart;
+                    return position;
+                }
+
+                /* Needs JQuery */
+                $(document).ready(function () {
+
+                    // change image
+                    function setCar() {
+                        var img = document.getElementById("image_view");
+                        img.src = this.value;
+                        console.log(this.value)
+                        return false;
+                    }
+                    document.getElementById("avatar").onchange = setCar;
+
+                    jQuery.fn.extend({
+                        insertAtCaret: function (myValue) {
+                            return this.each(function (i) {
+                                if (document.selection) {
+                                    //For browsers like Internet Explorer
+                                    this.focus();
+                                    sel = document.selection.createRange();
+                                    sel.text = myValue;
+                                    this.focus();
+                                }
+                                else if (this.selectionStart || this.selectionStart == '0') {
+                                    //For browsers like Firefox and Webkit based
+                                    var startPos = this.selectionStart;
+                                    var endPos = this.selectionEnd;
+                                    var scrollTop = this.scrollTop;
+                                    this.value = this.value.substring(0, startPos) + myValue + this.value.substring(endPos, this.value.length);
+                                    this.focus();
+                                    this.selectionStart = startPos + myValue.length;
+                                    this.selectionEnd = startPos + myValue.length;
+                                    this.scrollTop = scrollTop;
+                                } else {
+                                    this.value += myValue;
+                                    this.focus();
+                                }
+                            })
+                        }
+                    });
+
+                    $('#insertURL').click(function () {
+                        $("#txtArea").insertAtCaret('\n <a href="Your URL"> Display Text </a> ');
+                    });
+                    $('#insertImage').click(function () {
+                        $("#txtArea").insertAtCaret('\n <img src="Your Image URL" alt="Note for Image"> ');
+                    });
+
+                });
+            </script>
+            <hr>
+            <input type="submit" value="Submit">
+        </div>
+    </div>
+</form>
+<hr>

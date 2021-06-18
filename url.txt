@@ -1,0 +1,15 @@
+
+
+
+
+
+squelizer migrate:
+https://sequelize.org/master/manual/migrations.html
+	khoi tao
+npx sequelize-cli init
+	chinh file config
+	tao file model
+npx sequelize-cli model:generate --name User --attributes userid:id,username:string, password:string, email:string,avatar:string
+npx sequelize-cli model:generate --name Post --attributes userid:string,postname:string,postcontent:String
+	migrate
+npx sequelize-cli db:migrate
